@@ -13,7 +13,7 @@ class Locations(object):
         if locationRange == None:
             activeLocation = self.getActiveExperimentLocation()
             if activeLocation == None:
-                locationRange = [0, 0]
+                locationRange = [0, 0] 
             else:
                 locationRange = (activeLocation['startLocationRange'], activeLocation['endLocationRange'])
 
