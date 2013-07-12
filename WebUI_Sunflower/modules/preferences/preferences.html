@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Main Menu</title>
+	<!--  Begin Common site code  -->
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="common/js/jquery-ui-1.10.2.custom.js"></script>
+	<script src="common/js/main.js"></script>
+ 	<link rel="stylesheet" href="common/css/custom-theme/jquery-ui-1.10.2.custom.css" type="text/css" />
+ 	<link rel="stylesheet" href="common/css/site.css" type="text/css" />
+	<!--  End Common site code  -->
+	<link rel="stylesheet" href="css/style.css" type="text/css" />	
+	<script type="text/javascript">		
+  		
+  		function hiddenDiv(boxid) {
+  				document.getElementById(boxid).style.display = "none";
+  				document.getElementById(boxid).style.visibility = "hidden";
+  		}
+
+  		function showDiv(boxid) {
+  				document.getElementById(boxid).style.visibility = "visible";
+  				document.getElementById(boxid).style.display = "";
+  		}
+  		
+  		function manageBackButton(){
+     		 	
+  			if (document.getElementById('behaviour').style.visibility == "visible" ){
+   				show('main'); hiddenDiv('behaviour'); 
+   				document.getElementById('backButton').href="javascript:window.history.go(-1);";
+  			}else if (document.getElementById('services').style.visibility == "visible" ){
+   				show('main'); hiddenDiv('services'); 
+   				document.getElementById('backButton').href="javascript:window.history.go(-1);";
+  			}else if (document.getElementById('proxemics').style.visibility == "visible" ){
+   				show('main'); hiddenDiv('proxemics'); 
+   				document.getElementById('backButton').href="javascript:window.history.go(-1);";	
+  			}else{
+  				document.getElementById('backButton').href= "/home";
+  			}
+  		}
+  		
+  		function sendRobot(room){
+   			var ui = new uiHelper();
+ 			ui.sendCommand(room);
+  		}
+  		
+  		function changePreferences(type){
+  			var obj;
+  			if(type == "behaviour"){
+  				obj = {
+  						'preferences' : 'behaviour',
+  						'light' : document.getElementById("light").options[document.getElementById("light").selectedIndex].value,
+  						'sound' : document.getElementById("sound").options[document.getElementById("sound").selectedIndex].value
+  					};
+  			}else if (type == "services"){
+  				obj = {
+  						'preferences' : 'services',
+  						'weatherWebsite' : document.getElementById("weather").options[document.getElementById("weather").selectedIndex].value,
+  						'newsWebsite' : document.getElementById("news").options[document.getElementById("news").selectedIndex].value,
+  						'recipeWebsite' : document.getElementById("recipes").options[document.getElementById("recipes").selectedIndex].value,
+  						'musicWebsite' : document.getElementById("music").options[document.getElementById("music").selectedIndex].value
+  					};
+  			}else if (type == "proxemics"){
+  				obj = {
+  						'preferences' : 'proxemics',
+  						'location' : document.getElementById("location").options[document.getElementById("location").selectedIndex].value,
+  						'approach' : document.getElementById("approach").options[document.getElementById("approach").selectedIndex].value
+  					};
+  			}
+  			
+  			var ui = new uiHelper();
+  			ui.changePreferences(obj);
+  		}
+  		
+  		$(function() {		
+  			var ui = new uiHelper();
+  			//Check the kind of interface activated (simple or not)
+  			var value = ui.getInterface();
+
+  			//Show main or simple div
+  			if(value[0]['simpleInterface'] == '0') {
+  				showDiv('main');						
+  			}else{
+  				var preferences = ui.getPreferences();
+  				
+  				document.getElementById("weatherSimple").innerHTML = preferences[0]['weatherWebsite'];
+  				document.getElementById("newsSimple").innerHTML = preferences[0]['newsWebsite'];
+  				document.getElementById("musicSimple").innerHTML = preferences[0]['musicWebsite'];
+  				document.getElementById("recipeSimple").innerHTML = preferences[0]['recipeWebsite'];
+  				
+  				document.getElementById("robotLight").innerHTML = preferences[0]['light'];
+  				document.getElementById("robotSound").innerHTML = preferences[0]['sound'];
+  				
+  				showDiv('simple');
+  			}
+  			
+  		});
+  		
+	</script>
+</head>
+<body>
+	<body>
+    <div id="header" class="headerContainer" align="center">
+        <table width="99%" border="0" >
+            <tr>
+                <td width="20%" align="center">
+                    <a id="backButton" href="" onClick="manageBackButton()">
+                    	<img src="images/Back.png" class="headerButton" alt="Back" border="0">
+                    </a>
+                </td>
+                <td width="60%" align="center">
+                	<p class="welcome" id="welcomeMessage"></p>
+                </td>
+                <td width="20%" align="center">
+                     <a id="homeButton" href="/home">
+                     	<img src="images/Home.png" class="headerButton" alt="Home" border="0">
+                     </a>
+                </td>
+            </tr>
+        </table>
+    </div>	
+    <div id="main" align="center" style="display:none;">
+        <table width="60%" border="0" cellspacing="10" cellpadding="10">
+            <tr>
+                <td align="center">
+                	<input type="button" value="Behaviour&#10;Preferences" class="myButton" onclick="showDiv('behaviour'); hiddenDiv('main')">
+                </td>
+                <td align="center">
+                    <input type="submit" value="Proxemics&#10;Preferences" class="myButton" onclick="showDiv('proxemics'); hiddenDiv('main')">
+                </td>
+            </tr>
+            <tr>
+           		<td colspan="2" align="center">
+                	<input type="button" value="Services&#10;Preferences" class="myButton" onclick="showDiv('services'); hiddenDiv('main')">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="behaviour" align="center" style="display:none;">
+        <form class="form" name="preferencesForm" method="get">  
+        	<p class="title">  
+		        Please, choose one option and press 'Save':
+		    </p> 
+  			<table border="0" cellpadding="15">
+            	<tr>
+            		<td>
+	                	<label for="light">Robot Light:</label>
+	                </td>
+	                <td align="center">
+				        <select id="light">
+						  <option value="Yellow">Yellow</option>
+						  <option value="Red">Red</option>
+						  <option value="Green">Green</option>
+						  <option value="Blue">Blue</option>
+						</select>
+	                </td>
+            	</tr>
+            	<tr>
+            		<td>
+	                	<label for="sound">Robot Sound:</label>
+	            	</td>
+	           		<td align="center">
+			    		<select id="sound">
+				  			<option value="Sound 1">Sound 1</option>
+				  			<option value="Sound 2">Sound 2</option>
+				  			<option value="Sound 3">Sound 3</option>
+				  			<option value="Sound 4">Sound 4</option>
+						</select>
+	                </td>
+	            </tr>
+	        </table>
+		    <p class="submit">  
+		        <input type="submit" value="Save" onClick="changePreferences('behaviour')" /> 
+		        <input type="submit" value="Cancel" /> 
+		    </p>  
+		</form>
+    </div>
+    <div id="proxemics" align="center" style="display:none;">
+        <form class="form" name="preferencesForm" method="get">  
+        	<p class="title">  
+		        Please, choose one option and press 'Save':
+		    </p> 
+  			<table border="0" cellpadding="15">
+            	<tr>
+            		<td>
+	                	<label for="location">Robot Distance:</label>
+	                </td>
+	                <td align="center">
+				        <select id="location">
+						  <option value="Social">Social Zone (0.45 to 1.2m)</option>
+						  <option value="Personal">Personal Zone (1.2 to 3.6m)</option>
+						</select>
+	                </td>
+            	</tr>
+            	<tr>
+            		<td>
+	                	<label for="approach">Approach Direction:</label>
+	            	</td>
+	           		<td align="center">
+			    		<select id="approach">
+				  			<option value="Front-Left">Front-Left</option>
+				  			<option value="Front">Front</option>
+				  			<option value="Front-Right">Front-Right</option>
+						</select>
+	                </td>
+	            </tr>
+	        </table>
+		    <p class="submit">  
+		        <input type="submit" value="Save" onClick="changePreferences('proxemics')" /> 
+		        <input type="submit" value="Cancel" /> 
+		    </p>  
+		</form>
+    </div>
+    <div id="services" align="center" style="display:none;">
+        <form class="form" name="preferencesForm" method="get">  
+        	<p class="title">  
+		        Please, choose one option and press 'Save':
+		    </p> 
+  
+  			<table border="0" cellspacing="10" cellpadding="0">
+            	<tr>
+            		<td>
+	                	<label for="weather">Weather Website:</label>
+	                </td>
+	                <td align="center">
+				        <select id="weather">
+						  <option value="http://www.bbc.co.uk/weather">BBC Weather</option>
+						  <option value="http://www.accuweather.com/">Accuweather</option>
+						  <option value="http://www.metoffice.gov.uk/">Met Office Weather</option>
+						  <option value="http://uk.weather.com/">UK Weather</option>
+						</select>
+	                </td>
+	                
+            	</tr>
+            	<tr>
+            		<td>
+	                	<label for="news">News Website:</label>
+	            	</td>
+	           		<td align="center">
+			    		<select id="news">
+				  			<option value="http://www.bbc.co.uk/news/">BBC News</option>
+				  			<option value="http://www.telegraph.co.uk/">The Telegraph News</option>
+				  			<option value="http://www.thetimes.co.uk/">The Times News</option>
+				  			<option value="http://www.guardian.co.uk/">The Guardian News</option>
+						</select>
+	                </td>
+	            </tr>
+	            
+	            <tr>
+	            	<td>
+	                	<label for="music">Music Website:</label>
+	            	</td>
+	           		<td align="center">
+			    		<select id="music">
+				  			<option value="http://grooveshark.com">Grooveshark</option>
+				  			<option value="http://last.fm/">Last FM</option>
+				  			<option value="http://www.bbc.co.uk/music">BBC Music</option>
+						</select>
+	                </td>
+
+	            </tr>
+	            
+	            <tr>
+	            	<td>
+	                	<label for="recipes">Recipes Website:</label>
+	            	</td>
+	           		<td align="center">
+			    		<select id="recipes">
+				  			<option value="http://www.jamieoliver.com/recipes">Jamie Oliver Recipes</option>
+				  			<option value="http://www.bbc.co.uk/food/recipes">BBC Recipes</option>
+				  			<option value="http://www.waitrose.com/home/recipes.html">Waitrose Recipes</option>
+						</select>
+	                </td>
+	            </tr>
+	        </table>
+		    
+		    <p class="submit">  
+		        <input type="submit" value="Save" onClick="changePreferences('services')"/> 
+		        <input type="submit" value="Cancel" /> 
+		    </p>  
+		</form>
+    </div>
+    <div id="simple" align="center" style="display:none;">
+        <form class="form" name="simpleInterfaceForm">  
+        	<p class="title">  
+		        These are the options that you have chosen:
+		    </p> 
+  
+  			<table border="0" cellspacing="10" cellpadding="0">
+            	<tr>
+            		<td>
+	                	<label for="weatherSimple">Weather Website:</label>
+	                </td>
+	                <td align="center" id="weatherSimple"></td>
+            	</tr>
+            	<tr>
+            		<td>
+	                	<label for="newsSimple">News Website:</label>
+	            	</td>
+	           		<td align="center" id="newsSimple"></td>
+	            </tr>
+	            
+	            <tr>
+	            	<td>
+	                	<label for="musicSimple">Music Website:</label>
+	            	</td>
+	           		<td align="center" id="musicSimple"></td>
+	            </tr>
+	            
+	            <tr>
+	            	<td>
+	                	<label for="recipeSimple">Recipes Website:</label>
+	            	</td>
+	           		<td align="center" id="recipeSimple"></td>
+	            </tr>
+	            
+	            <tr> </tr>
+	            
+	            <tr>
+	            	<td>
+	                	<label for=robotLight>Robot's Light:</label>
+	            	</td>
+	           		<td align="center" id="robotLight"></td>
+	            </tr>
+	            <tr>
+	            	<td>
+	                	<label for="robotSound">Robot's Sound :</label>
+	            	</td>
+	           		<td align="center" id="robotSound"></td>
+	            </tr>
+	        </table>
+		</form>
+    </div>
+</body>
+</html>

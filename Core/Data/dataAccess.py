@@ -337,9 +337,10 @@ class Robots(object):
     
     def __init__ (self, robotTable=None, locationTable=None):
         from config import server_config
-        self._robotTable = robotTable or server_config['mysql_robot_table']
+	self._robotTable = robotTable or server_config['mysql_robot_table']
         self._locationTable = locationTable or server_config['mysql_location_table']
         self._sessionControlTable = server_config['mysql_session_control_table']
+        self._experimentLocationTable = server_config['mysql_experimentLocations_table']
         self._sql = SQLDao()
 
     def getRobot(self, robotId):
@@ -383,12 +384,16 @@ class Robots(object):
     def getActivatedRobot(self):
         sql = "SELECT `%(rob)s`.`robotName` \
                FROM `%(rob)s` \
-               INNER JOIN `%(session)s` ON `%(session)s`.`robotId` = `%(rob)s`.`robotId`" % {
+               INNER JOIN `%(experimentLocation)s` ON %(experimentLocation)s.`activeRobot` = `%(rob)s`.`robotId` \
+               INNER JOIN `%(session)s` ON %(session)s.`ExperimentalLocationId` = `%(experimentLocation)s`.`id`" % {
                               'rob': self._robotTable,
-                              'session': self._sessionControlTable
+                              'session': self._sessionControlTable,
+                              'experimentLocation': self._experimentLocationTable
                               }
                
-        return self._sql.getData(sql)
+        args = None
+
+        return self._sql.getData(sql, args)
     
 class ActionHistory(object):
     def __init__(self, actionHistoryTable=None, sensorSnapshotTable=None, sensorTable=None, sensorTypeTable=None, locationTable=None):

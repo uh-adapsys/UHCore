@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to the Robot House</title>
+	<link rel="stylesheet" href="css/site.css" type="text/css">
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/main.js"></script>
+	<script type="text/javascript">	
+	 	function setTime(){
+	 		var ui = new uiHelper();
+ 			ui.setTime();
+	 	}
+	</script>
+</head>
+<body>
+    <br>
+    <div align="center">
+        <h1><b>Welcome to the Robot House</b></h1>
+    </div>
+    <div align="center">
+        <table width="800" border="0">
+        <tr>
+            <td width="70%">
+                <h3 align="center">
+                    Thank you for taking part in this experiment. We hope you enjoy the experience.
+                    <br><br>
+                    Press "Home" to start.
+                </h3>
+            </td>
+            <td width="30%">
+               <form action="home">
+                    <center> 
+                    	<input type="image" src="images/Home.png" class="homeButton" alt="Home" onclick="setTime()">
+                    </center>
+                </form>
+            </td>
+        </tr>
+        </table>
+    </div>
+</body>
+</html>

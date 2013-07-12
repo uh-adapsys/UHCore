@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-Frame-Options" content="GOFORIT">
+	<title>User Services</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Style-Type" content="text/css">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<!--  Begin Common site code  -->
+	<script src="common/js/jquery-1.8.2.min.js"></script>
+	<script src="common/js/jquery-ui-1.10.2.custom.js"></script>
+	<script src="common/js/main.js"></script>
+ 	<link rel="stylesheet" href="common/css/custom-theme/jquery-ui-1.10.2.custom.css" type="text/css" />
+ 	<link rel="stylesheet" href="common/css/site.css" type="text/css" /> 	
+	<!--  End Common site code  -->
+	<link rel="stylesheet" href="css/style.css" type="text/css" />	
+	<script type="text/javascript">			
+  		
+  		function hiddenDiv(boxid) {
+  				document.getElementById(boxid).style.display = "none";
+  				document.getElementById(boxid).style.visibility = "hidden";
+  		}
+
+  		function showDiv(boxid, option) {
+  			var ui = new uiHelper();
+  			document.getElementById(boxid).style.visibility = "visible";
+  			document.getElementById(boxid).style.display = "";
+  			if(option !== 'none'){
+  				var preferences = ui.getPreferences()
+  				document.getElementById('urlFrame').src = preferences[0][option];
+  	  			document.getElementById('urlFrame').height = window.innerHeight-120;
+  			}
+  		}
+  		
+  		function manageBackButton(){
+
+     		if (document.getElementById('content').style.visibility == "visible"){
+   				show('services','none'); hiddenDiv('content'); 	
+   				document.getElementById('backButton').href="javascript:window.history.go(-1);";
+  			} else {
+  				document.getElementById('backButton').href= "/home";
+  			}
+  		}
+  		
+	</script>
+</head>
+<body>
+    <div id="header" class="headerContainer" align="center">
+        <table width="99%" border="0" >
+            <tr>
+                <td width="20%" align="center">
+                    <a id="backButton" href="" onClick="manageBackButton()">
+                    	<img src="images/Back.png" class="headerButton" alt="Back" border="0">
+                    </a>
+                </td>
+                <td width="60%" align="center">
+                	<p class="welcome" id="welcomeMessage"></p>
+                </td>
+                <td width="20%" align="center">
+                     <a id="homeButton" href="/home">
+                     	<img src="images/Home.png" class="headerButton" alt="Home" border="0">
+                     </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="services" align="center">
+        <table width="60%" border="0" cellspacing="1" cellpadding="10">
+            <tr>
+                <td >
+                    <div align="center">
+                    	<a href="#content" onclick="showDiv('content', 'weatherWebsite'); hiddenDiv('services')"> 
+                        	<img src="images/Weather3.png" class="imgIcon" border="0"></img>
+                        </a>
+                    </div>
+                </td>
+                <td >
+                    <div align="center">
+                        <a href="#content" onclick="showDiv('content', 'newsWebsite'); hiddenDiv('services')">	
+                        	<img src="images/News2.png" class="imgIcon" border="0"></img>
+                        </a>
+                    </div>
+                </td>
+           </tr>
+           <tr>
+               <td>
+                    <div align="center">
+                        <a href="#content" onclick="showDiv('content', 'musicWebsite'); hiddenDiv('services')">	
+                        	<img src="images/Music.png" class="imgIcon" border="0" ></img>
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <div align="center">
+                        <a href="#content" onclick="showDiv('content', 'recipeWebsite'); hiddenDiv('services')">	
+                        	<img src="images/Recipe2.png" class="imgIcon" border="0"></img>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+</iframe>
+</div>
+    </div>
+    <div id="content" align="center" style="display:none;">
+        <iframe id="urlFrame" align="center" width="99%" frameborder="0" scrolling="auto" src=""></iframe>
+    </div>
+</body>
+</html>

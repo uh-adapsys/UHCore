@@ -1,0 +1,110 @@
+/*
+ *Form CSS
+ */
+ 
+.myButton{
+ border:1px solid #A29752; 
+ -webkit-border-radius: 3px;
+ -moz-border-radius: 3px;
+ border-radius: 25px;
+ font-family:arial, helvetica, sans-serif; 
+ padding: 10px 10px 10px 10px; 
+ text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+ font-weight:bold; 
+ text-align: center; 
+ color: #FFFFFF; 
+ background-color: #B6AF69;
+ background-image: -webkit-gradient(linear, left top, left bottom, from(#B6AF69), to(#A29752));
+ background-image: -webkit-linear-gradient(top, #B6AF69, #A29752);
+ background-image: -moz-linear-gradient(top, #B6AF69, #A29752);
+ background-image: -ms-linear-gradient(top, #B6AF69, #A29752);
+ background-image: -o-linear-gradient(top, #B6AF69, #A29752);
+ background-image: linear-gradient(to bottom, #B6AF69, #A29752);
+ filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#B6AF69, endColorstr=#A29752);
+ width: 275px;
+ height: 180px;
+ font-size: 30pt;
+}
+
+.myButton:hover{
+ border:1px solid #7c773d; 
+ background-color: #38aeeb;
+ background-image: -webkit-gradient(linear, left top, left bottom, from(#C7C18B), top(#b7ad70));
+ background-image: -webkit-linear-gradient(top, #C7C18B, #b7ad70);
+ background-image: -moz-linear-gradient(top, #C7C18B, #b7ad70);
+ background-image: -ms-linear-gradient(top, #C7C18B, #b7ad70);
+ background-image: -o-linear-gradient(top, #C7C18B, #b7ad70);
+ background-image: linear-gradient(to bottom, #C7C18B, #b7ad70);
+ filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#C7C18B, endColorstr=#b7ad70);
+}
+
+
+/*
+* Form Style
+*/
+
+    input, textarea {   
+        padding: 9px;  
+        border: solid 1px #E5E5E5;  
+        outline: 0;  
+        font-size:  20px;  
+        width: 300px;  
+/*         background: #FFFFFF url('bg_form.png') left top repeat-x;   */
+/*         background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));   */
+/*         background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);   */
+        box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+        -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+        -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+        }  
+      
+    textarea {   
+        width: 400px;  
+        max-width: 400px;  
+        height: 150px;  
+        line-height: 150%;  
+        }  
+      
+    input:hover, textarea:hover
+    input:focus, textarea:focus {   
+        border-color: #C9C9C9;   
+        -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;  
+     }  
+     
+     select {   
+        padding: 9px;  
+        border: solid 1px #E5E5E5;  
+        outline: 0;  
+        font-size:  20px;  
+        width: 320px;  
+/*         background: #FFFFFF url('bg_form.png') left top repeat-x;   */
+/*         background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));   */
+/*         background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);   */
+        box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+        -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+        -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+        }
+      
+    .form label {   
+        margin-left: 10px;   
+        color: #26759e;   
+        font-weight:bold;
+     }  
+      
+    .submit input {
+    	border-radius: 25px;
+        padding: 9px 15px;  
+        background: #26759e;  
+        border: 0;  
+        font-size: 30px;  
+        color: #FFFFFF;  
+        -moz-border-radius: 5px;  
+        -webkit-border-radius: 5px;  
+        margin: 20px;
+     }  
+        
+      .title{
+       	font-weight:bold;
+       	font-size: 35px;
+       	color: #26759e; 
+      }
+

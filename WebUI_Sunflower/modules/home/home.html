@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Main Menu</title>
+	<!--  Begin Common site code  -->
+	<script src="common/js/jquery-1.8.2.min.js"></script>
+	<script src="common/js/jquery-ui-1.10.2.custom.js"></script>
+	<script src="common/js/main.js"></script>
+ 	<link rel="stylesheet" href="common/css/custom-theme/jquery-ui-1.10.2.custom.css" type="text/css" />
+ 	<link rel="stylesheet" href="common/css/site.css" type="text/css" />	
+	<!--  End Common site code  -->
+ 	<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+<body>	
+ 	<div id="header" class="headerContainer" align="center">
+        <table width="99%" border="0" >
+            <tr>
+                <td width="20%" align="center">
+                    <a id="backButton" href="" onClick="history.go(-1);return true;">
+                    	<img src="images/Back.png" class="headerButton" alt="Back" border="0">
+                    </a>
+                </td>
+                <td width="60%" align="center">
+                	<p class="welcome" id="welcomeMessage"></p>
+                </td>
+                <td width="20%" align="center">
+                     <a id="homeButton" href="/home">
+                     	<img src="images/Home.png" class="headerButton" alt="Home" border="0">
+                     </a>
+                </td>
+            </tr>
+        </table>
+    </div>	
+    <div align="center" id="main">
+        <table width="60%" border="0" cellspacing="10" cellpadding="10">
+            <tr>
+                <td>
+                    <div align="center">
+                    	<form action="commands">
+                       		<input type="submit" value="Command &#10;Interface" class="myButton">
+                       	</form>
+                    </div>
+                </td>
+                <td>
+                    <div align="center">
+                    	<form action="services">
+                       		<input type="submit" value="User &#10;Services" class="myButton">
+                       	</form>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">
+                    	<form action="">
+                       		<input type="submit" value="Activity &#10;History" class="myButton">
+                       	</form>
+                    </div>
+                </td>
+                <td>
+                    <div align="center">
+                    	<form action="preferences">
+                       		<input type="submit" value="Preferences" class="myButton">
+                       	</form>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

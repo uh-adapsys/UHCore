@@ -1,0 +1,16 @@
+/*
+ *Form CSS
+ */
+ 
+.imgIcon{
+    height: 190px;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=75);
+	-moz-opacity: 0.75;
+	opacity: 0.75;
+}
+
+.imgIcon:hover{
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+	-moz-opacity: 1;
+	opacity: 1;
+}
