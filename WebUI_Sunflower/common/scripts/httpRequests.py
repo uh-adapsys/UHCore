@@ -106,7 +106,8 @@ class RobotCommands(object):
         # Send voice command to the robot (espeak software required)        
         elif request.has_key('speech'):
             import subprocess
-            subprocess.call(['C:\\Program Files (x86)\\eSpeak\\command_line\\espeak.exe', request['speech']])
+            #subprocess.call(['C:\\Program Files (x86)\\eSpeak\\command_line\\espeak.exe', request['speech']]) #Windows
+            subprocess.call(['espeak', request['speech']]);
         else:      
             raise cherrypy.HTTPError(400)      
             
