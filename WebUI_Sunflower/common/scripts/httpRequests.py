@@ -99,14 +99,10 @@ class RobotCommands(object):
         if request.has_key('location'):
             object = self._dao.getLocationByName(request['location']);
             robot = Factory.getCurrentRobot();
-            if robot.name == 'UH Sunflower':
-                #self._so.setComponentState('tray', request['tray'])
-                #self._so.setComponentState('base', [object['xCoord'], object['yCoord'], object['orientation']])
-                print robot
-            else:
-                #self._so.setComponentState('tray', request['tray'])
-                #self._so.setComponentState('base', [object['xCoord'], object['yCoord'], object['orientation']])
-                print robot
+
+            robot.setComponentState('tray', request['tray'])
+            robot.setComponentState('base', [object['xCoord'], object['yCoord'], object['orientation']])
+
         # Send voice command to the robot (espeak software required)        
         elif request.has_key('speech'):
             import subprocess

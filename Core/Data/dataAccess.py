@@ -273,6 +273,19 @@ class Users(object):
             return sid
         else:
             return None
+        
+    def getActiveUserName(self):
+        sql = "SELECT `%(user)s`.`nickname` \
+               FROM `%(user)s` \
+               WHERE `%(user)s`.`userId` IN ( \
+                        SELECT `%(session)s`.`sessionUser` \
+                        FROM `%(session)s` )" % {
+                              'user': self._userTable,
+                              'session': self._sessionControlTable
+                              }       
+        args = None
+        
+        return self._sql.getData(sql, args)
     
     def getActiveUser(self):
         sql = "SELECT `%(user)s`.*, %(loc)s.name as 'locationName' \
@@ -317,6 +330,17 @@ class Users(object):
                 }
         
         return self._sql.saveData(sql, args) >= 0
+    
+    def setSessionControlTime(self, time):
+        sql = 'UPDATE `%s` ' % (self._sessionControlTable)
+        sql += 'SET `sessionTime` = %(time)s'
+        
+        args = { 'time': time }
+        
+        if self._sql.saveData(sql, args) >= 0:
+            return True
+        else:
+            return False
             
     def getPersonaValues(self):
         sql = "SELECT `%(persona)s`.* \
@@ -360,7 +384,7 @@ class Robots(object):
                FROM `%(rob)s` \
                INNER JOIN `%(loc)s` ON %(loc)s.`locationId` = `%(rob)s`.`locationId`" % {
                               'rob': self._robotTable,
-                              'loc': self._locationTable
+                              'loc': self._locationTablepersona
                               }
         sql += " WHERE `robotName` = %(name)s"
         args = {'name': robotName }
@@ -746,8 +770,26 @@ class DataAccess(object):
     def getUser(self, userId):
         return self.users.getUser(userId)
     
+    def getActiveUser(self):
+        return self.users.getActiveUser()
+    
+    def getActiveUserName(self):
+        return self.users.getActiveUserName()
+    
     def getUserByName(self, userName):
         return self.users.getUserByName(userName)
+    
+    def getPersonaValues(self):
+        return self.users.getPersonaValues()
+    
+    def getUserPreferences(self):
+        return self.users.getUserPreferences()
+    
+    def setUserPreferences(self, column, value):
+        return self.users.setUserPreferences(column, value)
+    
+    def setSessionControlTime(self, time):
+        return self.users.setSessionControlTime(time)
 
     def findUsers(self, userName=None):
         return self.users.findUsers(userName)

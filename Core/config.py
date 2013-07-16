@@ -6,7 +6,8 @@ server_config = {
   'http_port':       1055,
 
   # The settings for the channel logging MySQL server / database / table
-  'mysql_log_server':   'rh-database',
+  #'mysql_log_server':   'rh-database',
+  'mysql_log_server':   'localhost',
   'mysql_log_user':     'rhUser',
   'mysql_log_password': 'waterloo',
   'mysql_log_db':       'Accompany',
@@ -23,7 +24,7 @@ server_config = {
   'mysql_responses_table':'userInterfaceGUI',
   'mysql_users_table':'Users',
   'mysql_user_preferences_table': 'UserPreferences',
-  'mysql_personas_table': '',
+  'mysql_personas_table': 'Personas',
   'mysql_experimentLocations_table':'ExperimentalLocation',
   'mysql_session_control_table':'SessionControl',
   
