@@ -85,8 +85,6 @@ class UserData(object):
 class RobotCommands(object):
     
     def __init__(self):
-        #self._so = Sunflower()
-        #self._cob =  CareOBot()
         self._dao = DataAccess()
     
     exposed = True
@@ -105,9 +103,11 @@ class RobotCommands(object):
 
         # Send voice command to the robot (espeak software required)        
         elif request.has_key('speech'):
-            import subprocess
-            #subprocess.call(['C:\\Program Files (x86)\\eSpeak\\command_line\\espeak.exe', request['speech']]) #Windows
-            subprocess.call(['espeak', request['speech']]);
+            print self._dao.getUserPreferences()[0]['voice']
+            if self._dao.getUserPreferences()[0]['voice'] == 1:
+                import subprocess
+                #subprocess.call(['C:\\Program Files (x86)\\eSpeak\\command_line\\espeak.exe', request['speech']]) #Windows
+                subprocess.call(['espeak', request['speech']]); #Linux
         else:      
             raise cherrypy.HTTPError(400)      
             

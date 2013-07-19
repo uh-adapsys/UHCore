@@ -49,7 +49,8 @@
   				obj = {
   						'preferences' : 'behaviour',
   						'light' : document.getElementById("light").options[document.getElementById("light").selectedIndex].value,
-  						'sound' : document.getElementById("sound").options[document.getElementById("sound").selectedIndex].value
+  						'sound' : document.getElementById("sound").options[document.getElementById("sound").selectedIndex].value,
+  						'voice' : document.getElementById("voice").options[document.getElementById("voice").selectedIndex].value
   					};
   			}else if (type == "services"){
   				obj = {
@@ -89,6 +90,11 @@
   				
   				document.getElementById("robotLight").innerHTML = preferences[0]['light'];
   				document.getElementById("robotSound").innerHTML = preferences[0]['sound'];
+  				if (preferences[0]['voice'] == '1'){
+  					document.getElementById("robotVoice").innerHTML = "Activated";
+  				}else{
+  					document.getElementById("robotVoice").innerHTML = "Deactivated";
+  				}
   				
   				showDiv('simple');
   			}
@@ -167,6 +173,17 @@
 						</select>
 	                </td>
 	            </tr>
+	            <tr>
+        		<td>
+                	<label for="voice">Robot Voice:</label>
+            	</td>
+           		<td align="center">
+		    		<select id="voice">
+			  			<option value="1">Activated</option>
+			  			<option value="0">Deactivated</option>
+					</select>
+                </td>
+            </tr>
 	        </table>
 		    <p class="submit">  
 		        <input type="submit" value="Save" onClick="changePreferences('behaviour')" /> 
@@ -327,6 +344,12 @@
 	            	</td>
 	           		<td align="center" id="robotSound"></td>
 	            </tr>
+	            <tr>
+            	<td>
+                	<label for="robotVoice">Robot's Voice :</label>
+            	</td>
+           		<td align="center" id="robotVoice"></td>
+            </tr>
 	        </table>
 		</form>
     </div>
