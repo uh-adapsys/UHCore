@@ -757,6 +757,9 @@ class DataAccess(object):
         
     def getResponses(self, sequenceName=None):
         return self.userInterface.getResponses(sequenceName)
+    
+    def getActiveExperimentLocation(self):
+        return self.locations.getActiveExperimentLocation()
 
     def getLocation(self, locationId):
         return self.locations.getLocation(locationId)

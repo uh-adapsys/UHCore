@@ -83,7 +83,7 @@ robot_config = {
                                    },
                 'Care-O-Bot 3.6': {
                                    'phidgets': {'topics': ['/tray_sensors/range_0', '/tray_sensors/range_1', '/tray_sensors/range_2', '/tray_sensors/range_3'], 'windowSize': 5, 'distance': 10 },
-                                   'tray': { 'positions': {'raised': 'deliverup', 'lowered': 'store'}},
+                                   'tray': { 'positions': {'raised': 'deliverup', 'lowered': 'storetray'}},
                                    'head': { 
                                                 'positions': { 'front': 'front', 'back': 'back' },
                                                 'camera': {

@@ -63,6 +63,8 @@ class UserData(object):
             value = self._dao.getPersonaValues()
         elif questionNo == 'username': 
             value = self._dao.getActiveUserName()
+        elif questionNo == 'experimentLocation':
+            value = self._dao.getActiveExperimentLocation()
         
         cherrypy.response.headers['Content-Type'] = 'application/json'
         return json.dumps(value)
@@ -103,7 +105,7 @@ class RobotCommands(object):
 
         # Send voice command to the robot (espeak software required)        
         elif request.has_key('speech'):
-            print self._dao.getUserPreferences()[0]['voice']
+
             if self._dao.getUserPreferences()[0]['voice'] == 1:
                 import subprocess
                 #subprocess.call(['C:\\Program Files (x86)\\eSpeak\\command_line\\espeak.exe', request['speech']]) #Windows

@@ -41,7 +41,17 @@
   		function sendCommand(room, tray){
    			
    			var ui = new uiHelper();
- 			ui.sendCommand(room, tray);
+   			var location = ui.getActiveExperimentLocation();
+
+   			if(location['location'] == "IPA Kitchen"){
+   				if(room == "Kitchen") ui.sendCommand('IPA Kitchen Kitchen', tray);
+   				else if(room == "Living Room") ui.sendCommand('IPA Kitchen Sofa Area', tray);
+   			}else if (location['location'] == 'UH Robot House'){
+   				if(room == "Kitchen") ui.sendCommand('Kitchen Entrance', tray);
+   				else if(room == "Living Room") ui.sendCommand('Living Room Sofa Area', tray);
+   				else if(room == "Dining Area") ui.sendCommand('Dining Area Table', tray);
+   				else if(room == "Hall") ui.sendCommand('Hall Entrance', tray);
+   			}
  			
  			javascript:window.history.go(-1);
   		}
@@ -94,18 +104,18 @@
         <table width="60%" border="0" cellspacing="10" cellpadding="10">
             <tr>
                 <td align="center">
-                    <input type="button" value="Kitchen" class="myButtonRoom" onclick="sendCommand('Kitchen Entrance', 'closed')">
+                    <input type="button" value="Kitchen" class="myButtonRoom" onclick="sendCommand('Kitchen', 'lowered')">
                 </td>
                 <td align="center">
-                    <input type="button" value="Living&#10;Room" class="myButtonRoom" onclick="sendCommand('Living Room Sofa Area', 'closed')">
+                    <input type="button" value="Living&#10;Room" class="myButtonRoom" onclick="sendCommand('Living Room', 'lowered')">
                 </td>
             </tr>
             <tr>
            		<td align="center">
-                	<input type="button" value="Dining&#10;Area" class="myButtonRoom" onclick="sendCommand('Dining Room Table', 'closed')">
+                	<input type="button" value="Dining&#10;Area" class="myButtonRoom" onclick="sendCommand('Dining Area', 'lowered')">
                 </td>
                 <td align="center">
-                    <input type="button" value="Hall" class="myButtonRoom" onclick="sendCommand('Hall Entrance', 'closed')">
+                    <input type="button" value="Hall" class="myButtonRoom" onclick="sendCommand('Hall', 'lowered')">
                 </td>
             </tr>
         </table>
@@ -114,18 +124,18 @@
         <table width="60%" border="0" cellspacing="10" cellpadding="10">
             <tr>
                 <td align="center">
-                    <input type="button" value="Kitchen" class="myButtonRoom" onclick="sendCommand('Kitchen Entrance', 'open')">
+                    <input type="button" value="Kitchen" class="myButtonRoom" onclick="sendCommand('Kitchen', 'raised')">
                 </td>
                 <td align="center">
-                    <input type="button" value="Living&#10;Room" class="myButtonRoom" onclick="sendCommand('Living Room Sofa Area', 'open')">
+                    <input type="button" value="Living&#10;Room" class="myButtonRoom" onclick="sendCommand('Living Room', 'raised')">
                 </td>
             </tr>
             <tr>
            		<td align="center">
-                	<input type="button" value="Dining&#10;Area" class="myButtonRoom" onclick="sendCommand('Dining Room Table', 'open')">
+                	<input type="button" value="Dining&#10;Area" class="myButtonRoom" onclick="sendCommand('Dining Area', 'raised')">
                 </td>
                 <td align="center">
-                    <input type="button" value="Hall" class="myButtonRoom" onclick="sendCommand('Hall Entrance', 'open')">
+                    <input type="button" value="Hall" class="myButtonRoom" onclick="sendCommand('Hall', 'raised')">
                 </td>
             </tr>
         </table>

@@ -215,6 +215,10 @@
 			
 		},
 		
+		getActiveExperimentLocation: function(){
+			return new dataHelper().getResponse('/userdata/experimentLocation');
+		},
+		
 		getPreferences: function(){
 	        return new dataHelper().getResponse('/userdata/preferences');
 		},
