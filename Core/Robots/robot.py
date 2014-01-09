@@ -153,7 +153,8 @@ class Robot(object):
             if blocking is set to false, this function will return immediately with value 'ACTIVE'
         """
         
-        if robot_config.has_key(self.name) and \
+        if type(value) == str and \
+           robot_config.has_key(self.name) and \
            robot_config[self.name].has_key(name) and \
            robot_config[self.name][name].has_key('positions') and \
            robot_config[self.name][name]['positions'].has_key(value):
