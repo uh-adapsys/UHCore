@@ -77,7 +77,7 @@ locations_config = {
         'Robot Name': {
                         'componentName': {
                                             'positions': {
-                                                            'generic': 'specific',
+                                                            'generic': 'robot specific rosparam',
                                                          }
                                             ...other component specific settings...
                                          }
@@ -116,6 +116,27 @@ robot_config = {
                                                        }
                                             },
                                    },
+                'Care-O-Bot 3.5': {
+                                   'phidgets': {'topics': ['/tray_sensors/range_0', '/tray_sensors/range_1', '/tray_sensors/range_2', '/tray_sensors/range_3'], 'windowSize': 5 },
+                                   'tray': { 
+                                                'positions': {
+                                                              'raised': 'deliverup',
+                                                              'lowered': 'storetray',
+                                                              },
+                                                'size' : 10
+                                            },
+                                   'head': { 
+                                                'positions': { 'front': 'front', 'back': 'back' },
+                                                'camera': {
+                                                       'topic':'/stereo/right/image_color/compressed',
+                                                       'rotate': {
+                                                                         'angle': 0,
+                                                                         'distance': 90,
+                                                                         'amount': 180
+                                                                         }
+                                                       }
+                                            },
+                                   },
                 'Care-O-Bot 3.6': {
                                    'phidgets': {'topics': ['/tray_sensors/range_0', '/tray_sensors/range_1', '/tray_sensors/range_2', '/tray_sensors/range_3'], 'windowSize': 5 },
                                    'tray': { 
@@ -125,6 +146,7 @@ robot_config = {
                                                               'lowered': 'store'
                                                               },
                                                 'size' : 10
+
                                             },
                                    'head': { 
                                                 'positions': { 'front': 'front', 'back': 'back' },
@@ -142,7 +164,8 @@ robot_config = {
                                    'hostname': 'sf1-1-pc1',
                                    'tray': { 
                                                 'positions': { 
-                                                              'raised': 'open', 'lowered': 'closed' 
+                                                              'raised': 'open', 
+                                                              'lowered': 'closed',
                                                               }
                                             },
                                    'head': { 

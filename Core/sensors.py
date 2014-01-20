@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import sys
 from socket import AF_INET, SOCK_DGRAM, socket, timeout
 from Data.dataAccess import SQLDao, Sensors, Locations

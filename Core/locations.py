@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from Data.dataAccess import DataAccess, Locations
 from config import server_config
 from extensions import PollingProcessor
