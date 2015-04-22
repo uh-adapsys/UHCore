@@ -445,6 +445,7 @@ class ActionHistory(object):
             where = self._appendWhere(where, clause)
 
         sql += where
+	sql += ' ORDER BY `timestamp` asc'
         return self._processResultsOrdered(self._sql.getData(sql, args))
 
     def getHistory(self, ruleName=None, tags=None):

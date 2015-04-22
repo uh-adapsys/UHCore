@@ -359,6 +359,7 @@ class ZigBee(PollingProcessor):
 		self._sensorDao = Sensors()
 		self._sensors = self._sensorDao.findSensors()
 		self._warned = []
+                #self._unknownsensors = {}
 
 	@property
 	def channels(self):
@@ -389,6 +390,9 @@ class ZigBee(PollingProcessor):
 
 		mac = mac.lower()
 		channel = channel.upper()
+                #if self._unknownsensors.get(str(mac) + str(channel), None) != _value:
+                #    print "ZigBee Sensor at %s updated from value %s to value %s" % (str(mac) + str(channel), self._unknownsensors.get(str(mac) + str(channel), None), _value)
+                #    self._unknownsensors[str(mac) + str(channel)] = _value
 		
 		try:
 			sensor = next(s for s in self._sensors if s['ChannelDescriptor'] == str(mac) + str(channel))

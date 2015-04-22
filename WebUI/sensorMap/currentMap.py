@@ -5,6 +5,7 @@ from SensorMap.processor import MapProcessor
 from Data.dataAccess import DataAccess, Locations, Robots
 from Data.stateResolver import StateResolver
 from config import locations_config
+import datetime
 
 class MapImage(object):
     exposed = True
@@ -49,4 +50,8 @@ class MapImage(object):
         
         data = io.BytesIO(img)
         cherrypy.response.headers['Content-Type'] = mimetypes.guess_type('img.svg')[0]
+        cherrypy.response.headers['Cache-Control'] = "max-age=0, no-cache, must-revalidate"
+        cherrypy.response.headers['Pragma'] = "no-cache"
+        # In the past to prevent browser caching
+        cherrypy.response.headers['Expires'] = (datetime.datetime.utcnow() - datetime.timedelta(hours=1)).strftime('%a, %d %b %Y %H:%M:%S GMT')
         return file_generator(data)

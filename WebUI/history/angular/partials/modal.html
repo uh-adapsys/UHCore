@@ -4,7 +4,7 @@
 <div class="container">
 		<div class="row-fluid">
 			<div class="span2">
-				</br></br></br>
+				</br></br></br></br></br></br></br></br></br></br>
 				<p ng-click="goback(eventId2Show)"><img ng-src="images/back03.png"></p>
 				</select-->
 			</div>
@@ -13,7 +13,7 @@
 				<div ng-repeat="eps in img.episodes | filter:{eventId : eventId2Show}">
 					<div ng-repeat="event in eps.events | filter:{imageUrl : img2Show}">
 						<p style="font-size:25px"><b> {{event.name}} on {{event.time.real}}</b></p>
-						<div ng-click="goback(eventId2Show)" align="center"><img ng-src="{{event.imageUrl}}"></div>
+						<div align="center"><img ng-src="{{event.imageUrl}}"></div>
 					</div>
 				</div>
 			</div>
