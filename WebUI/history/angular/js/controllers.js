@@ -52,6 +52,7 @@ historyAppController.controller('EpisodesDetailCtrl', function EpisodesDetailCtr
   $scope.go2 = function ( path  ) {
     $location.path( "/history/" +$scope.eventId2Show+"/"+path);
   };
+  //$scope.ruleName = 'name';
 
   $scope.goback = function () {
     $location.path( "/history");

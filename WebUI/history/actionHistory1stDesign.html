@@ -59,21 +59,21 @@
 
 			</div>
 		
-			<div class="span6">
-					<ul class="episodes" ng-repeat="ep in episodes.episodes">
-						<li ng-controller="ModalCtrl" ng-click="viaService()" ng-repeat="event in ep.events | filter:locationquery:strict  | filter:eventquery:strict  | orderBy:orderProp | filter:statusquery" class="thumbnail">
+			<div >
+					<div class="clearfix" ng-repeat="ep in episodes.Episodes">
+						<div ng-controller="ModalCtrl" ng-click="viaService()" ng-repeat="event in ep.Events | filter:locationquery:strict  | filter:eventquery:strict  | orderBy:orderProp | filter:statusquery" class="inner">
 							<!--a ng-href="{{event.imageUrl}}" target="_blank" class="thumb" ><img ng-src="images/viewGeneral.jpg"></a--> <!-- WORKS -->
-							<a class="thumb" ><img ng-src="{{event.imageThUrl}}"></a>
-							<p data-ng-init="loadRuleName(event.name)" ><b>Name</b> {{event.name}}</p>
-							<p data-ng-init="loadLocationName(event.location)" ><b></b> {{event.time['real']}}<b> , </b> {{event.location}}</p>
+							<p data-ng-init="loadLocationName(event.location)"><img ng-src="images/viewGeneral.jpg"></p>
+							<p data-ng-init="loadRuleName(event.name)" ><b> {{event.name}}</b></p>
+							<!--p data-ng-init="loadLocationName(event.location)" ><b></b> {{event.time['real']}}<b> , </b> {{event.location}}</p>
 
-							<!--{{setRadioValue(event.tags[0])}}  this sets the radio value to the data tag 
+							{{setRadioValue(event.tags[0])}}
 							<div class="btn-group" ng-change="setTags(tagsValue,event)" ng-model="tagsValue" bs-buttons-radio>
 								<button ng-repeat="item in tagsItems" type="button" class="btn" value="{{item.value}}" >{{item.label}}</button>
 							</div-->
 							<!--p>{{tagsValue}}</p-->
-						</li>
-					</ul>
+						</div>
+					</div>
 			</div>
 		</div>	
 
