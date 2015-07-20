@@ -158,7 +158,8 @@ class SensorLog(PollingProcessor):
                                                   sensor['room'],
                                                   sensor['channel'])
                 if success:
-                    print "Updated sensor log for %(id)s to %(status)s (%(value)s)" % { 
+                    print "%(time)s: Updated sensor log for %(id)s to %(status)s (%(value)s)" % { 
+                                                                           'time':timestamp,
                                                                            'id':sensor['channel'],
                                                                            'status': status,
                                                                            'value': val,

@@ -132,7 +132,9 @@ class RobotActions(object):
                 apt.text as type_description,\
                 ap.likelihood,\
                 ap.apId,\
-                ap.precondId as precond_id\
+                ap.precondId as precond_id,\
+                ap.x as x,\
+                ap.y as y\
             FROM\
                 SessionControl s\
                 INNER JOIN Users u ON u.userId = s.SessionUser\
