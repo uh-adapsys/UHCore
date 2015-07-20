@@ -17,10 +17,9 @@ uiHelper.prototype = {
 	autoRefresh : function(img) {
 		var self = this;
 		setTimeout(function() {
-			$(img).attr("src", "image");
-			//doing this causes a massive memory leak
-			//since the image is an svg, it should be fine without cache busting
-			//$(img).attr("src", "image?cachebust=" + new Date().getTime());
+			//$(img).attr("src", "image");
+			//should be safe as image is served with no-cache header
+			$(img).attr("src", "image?cachebust=" + new Date().getTime());
 			self.autoRefresh(img);
 		}, 2000);
 	},

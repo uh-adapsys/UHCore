@@ -1,8 +1,18 @@
+html, head, body {
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 .map {
-	border: 2px solid black;
-	border-radius: 25px;
-	overflow: auto;
+	overflow: hidden;
+	text-align: center;
 	vertical-align: middle;
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
 }
 
 .map img {	

@@ -8,20 +8,6 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
-.clearfix {
-  *zoom: 1;
-}
-
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-
-.clearfix:after {
-  clear: both;
-}
-
 .hide-text {
   font: 0/0 a;
   color: transparent;
@@ -227,19 +213,22 @@
     width: 662px;
   }
   .span10 {
-    width: 600px;
+    width: 100%;
   }
   .span9 {
-    width: 538px;
+    /*width: 538px;*/
+    width: 90%;
   }
   .span8 {
-    width: 476px;
+    /*width: 476px;*/
+    width: 80%;
   }
   .span7 {
     width: 414px;
   }
   .span6 {
-    width: 352px;
+    /*width: 352px;*/
+    width: 60%;
   }
   .span5 {
     width: 290px;
@@ -248,13 +237,15 @@
     width: 228px;
   }
   .span3 {
-    width: 166px;
+    /*width: 166px;*/
+    width: 30%;
   }
   .span2 {
-    width: 104px;
+    /*width: 104px;*/
+    width: 20%;
   }
   .span1 {
-    width: 42px;
+    width: 10%;
   }
   .offset12 {
     margin-left: 764px;
